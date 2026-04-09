@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md border rounded-2xl;
+  }
+  .glass-dark {
+    @apply bg-white/5 border-white/10;
+  }
+  .glass-light {
+    @apply bg-black/5 border-black/10;
+  }
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-medium font-display transition-all duration-200 
+           hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl border font-body text-sm transition-all duration-200
+           focus:outline-none focus:ring-2;
+  }
+  .section-title {
+    @apply text-2xl font-display font-semibold tracking-tight;
+  }
+  .stat-value {
+    @apply text-3xl font-display font-semibold tabular-nums;
+  }
+  .tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium font-display;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+.light ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); }
+
+input[type=range] { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; cursor: pointer; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; cursor: pointer; transition: transform 0.15s; }
+input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+.animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
+.animate-slide-up { animation: slideUp 0.4s ease-out; }
+.animate-pulse-ring {
+  animation: pulseRing 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes pulseRing { 0%, 100% { box-shadow: 0 0 0 0 rgba(45, 212, 170, 0.4); } 50% { box-shadow: 0 0 0 12px rgba(45, 212, 170, 0); } }
+
+.glow-green { box-shadow: 0 0 20px rgba(45, 212, 170, 0.3); }
+.glow-red { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
